@@ -1,0 +1,33 @@
+export const PokemonTypes = {
+  Normal: 'primary',
+  Fighting: 'secondary',
+  Flying: 'success',
+  Poison: 'danger',
+  Ground: 'warning',
+  Rock: 'info',
+  Bug: 'light',
+  Ghost: 'dark',
+  Steel: 'primary',
+  Fire: 'secondary',
+  Water: 'success',
+  Grass: 'danger',
+  Electric: 'warning',
+  Psychic: 'info',
+  Ice: 'light',
+  Dragon: 'dark',
+  Dark: 'primary',
+  Fairy: 'secondary',
+}
+
+export const PokemonColor = {
+  '1': 'primary',
+  '2': 'secondary',
+  '3': 'success',
+  '4': 'danger',
+  '5': 'warning',
+  '6': 'info',
+  '7': 'light',
+  '8': 'dark',
+  '9': 'primary',
+  '10': 'secondary',
+}

@@ -11,7 +11,7 @@ import { BlockUIModule } from 'ng-block-ui';
 
 import { AppComponent } from './app.component';
 
-import { BlockUi, ToolBar } from './components';
+import { BlockUi, PokemonCard, PokemonFilter, ToolBar } from './components';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRouting } from './app.routing';
 import { InicioPage, PokemonPage } from './pages';
@@ -21,6 +21,8 @@ import { InicioPage, PokemonPage } from './pages';
 const COMPONENTS = [
   InicioPage,
   PokemonPage,
+  PokemonCard,
+  PokemonFilter,
 
   BlockUi,
   ToolBar,

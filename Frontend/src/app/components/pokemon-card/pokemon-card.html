@@ -1,0 +1,16 @@
+<div class="wrapper">
+    <div class="card bg-{{getColor()}}"><img src="{{url}}/{{pokemon.id}}" alt="Image" />
+        <div class="info">
+            <h5>#{{pokemon.id}}</h5>
+            <h5>{{pokemon.name.english}}</h5>
+
+            <div class>
+                <span *ngFor="let t of pokemon?.type"
+                      class="mr-2 mb-2 badge badge-{{pokemonTypes[t]}}">{{t}}
+                </span>
+            </div>
+
+            <button class="btn btn-primary btn-sm">Ver más</button>
+        </div>
+    </div>
+</div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
 import { delay, finalize } from 'rxjs/operators';
+import { Pokemon } from 'src/app/models';
 
 import { ApiService } from 'src/app/services/api.service';
 
@@ -14,7 +15,7 @@ export class InicioPage implements OnInit {
 
   @BlockUI() blockUI: NgBlockUI;
 
-  datos = [];
+  pokemones: Pokemon[] = [];
 
   constructor(private api: ApiService, private router: Router) { }
 
@@ -25,13 +26,17 @@ export class InicioPage implements OnInit {
 
   getPokemones() {
     this.blockUI.start('Cargando...');
-    this.api.getPokemones()
-      .pipe(delay(1000))
+
+    const pageNumber = 1;
+    const pageSize = 20;
+
+    this.api.getPokemones(pageNumber, pageSize)
+      .pipe(delay(1000))// CON FINES DEMOSTRACION
       .pipe(finalize(() => this.blockUI.stop()))
       .subscribe(
-        res => {
-          this.datos = res;
-          if (res.length != 0) this.redirect();
+        pokemones => {
+          this.pokemones = pokemones;
+          if (pokemones.length != 0) this.redirect();
         }
       )
   }

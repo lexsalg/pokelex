@@ -1,19 +1,12 @@
 <div class="container">
-    <div class="row">
-        <div *ngFor="let item of data" class="col-3">
-            <div class="card">
-                <img src="http://localhost:5000/api/v1/image/{{item.id}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">
-                        {{item.id}}
-                    </p>
-                    <p class="card-text">
-                        {{item.name.english}}
-                    </p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
+
+    <div class="d-flex justify-content-center">
+        <pokemon-filter></pokemon-filter>
+    </div>
+
+    <div class="row wrapper">
+        <!-- <div > -->
+        <pokemon-card *ngFor="let p of pokemones" class="col-3 mb-4" [pokemon]="p"></pokemon-card>
+        <!-- </div> -->
     </div>
 </div>
