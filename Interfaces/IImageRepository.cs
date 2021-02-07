@@ -14,5 +14,6 @@ namespace PokeLexApi.Interfaces
         Task AddPokemonImage(Image item);
 
         Task AddPokemonImages(List<Image> list);
+        Task<bool> RemoveAll();
     }
 }

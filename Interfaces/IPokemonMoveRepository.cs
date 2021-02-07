@@ -11,5 +11,7 @@ namespace PokeLexApi.Interfaces
         Task<IEnumerable<PokemonMove>> GetAllPokemonMoves();
         Task<PokemonMove> GetPokemonMove(string id);
         Task AddPokemonMoves(List<PokemonMove> list);
+
+        Task<bool> RemoveAll();
     }
 }

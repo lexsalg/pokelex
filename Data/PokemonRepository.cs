@@ -33,13 +33,46 @@ namespace PokeLexApi.Data
             }
         }
 
+        public async Task<IEnumerable<Pokemon>> GetPokemons(int pageSize, int pageNum)
+        {
+            try
+            {
+                var skips = pageSize * (pageNum - 1);
+                var query = _context.Pokemons.Find(_ => true).SortBy(p => p.InternalId).Skip(skips).Limit(pageSize);
+                var items = await query.ToListAsync();
+                return items;
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
+        public async Task<IEnumerable<Pokemon>> SearchPokemon(string name, int pageSize, int pageNum)
+        {
+            try
+            {
+                var skips = pageSize * (pageNum - 1);
+                var query = _context.Pokemons.Find(x => x.Name.English.Contains(name)).SortBy(p => p.InternalId).Skip(skips).Limit(pageSize);
+                var items = await query.ToListAsync();
+                return items;
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
         public async Task<Pokemon> GetPokemon(string id)
         {
             try
             {
                 ObjectId internalId = GetInternalId(id);
                 return await _context.Pokemons
-                                .Find(Pokemon => Pokemon.Id == id || Pokemon.InternalId == internalId)
+                                // .Find(Pokemon => Pokemon.Id == id || Pokemon.InternalId == internalId)
+                                .Find(Pokemon => Pokemon.Id == id)
                                 .FirstOrDefaultAsync();
             }
             catch (Exception ex)

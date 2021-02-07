@@ -8,7 +8,8 @@ namespace PokeLexApi.Models
     public class Pokemon
     {
         [BsonId]
-        public ObjectId InternalId { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string InternalId { get; set; }
 
         public string Id { get; set; }
 

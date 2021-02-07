@@ -9,5 +9,7 @@ namespace PokeLexApi.Interfaces
     public interface ILoadDataService
     {
         Task LoadData();
+        Task DeleteData();
+
     }
 }

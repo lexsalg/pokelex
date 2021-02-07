@@ -10,15 +10,14 @@ namespace PokeLexApi.Interfaces
     {
         Task<IEnumerable<Pokemon>> GetAllPokemons();
 
+        Task<IEnumerable<Pokemon>> GetPokemons(int pageSize, int pageNum);
+        Task<IEnumerable<Pokemon>> SearchPokemon(string name, int pageSize, int pageNum);
         Task<Pokemon> GetPokemon(string id);
 
         Task AddPokemon(Pokemon item);
         Task AddPokemons(List<Pokemon> list);
 
         Task<bool> RemovePokemon(string id);
-
-
-        // Task<bool> UpdatePokemon(string id, Pokemon pokemon);
 
         Task<bool> RemoveAllPokemons();
 

@@ -34,6 +34,18 @@ namespace PokeLexApi.Controllers
             return await _pokemonRepository.GetAllPokemons();
         }
 
+        [HttpGet("filter")]
+        public async Task<IEnumerable<Pokemon>> Filter([FromQuery] int psize, [FromQuery] int pnum)
+        {
+            return await _pokemonRepository.GetPokemons(psize, pnum);
+        }
+
+        [HttpGet("search")]
+        public async Task<IEnumerable<Pokemon>> Search([FromQuery] string name, [FromQuery] int pageSize, [FromQuery] int pageNum)
+        {
+            return await _pokemonRepository.SearchPokemon(name, pageSize, pageNum);
+        }
+
         [HttpGet("{id}")]
         public async Task<Pokemon> Get(string id)
         {

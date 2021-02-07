@@ -61,5 +61,21 @@ namespace PokeLexApi.Data
             }
         }
 
+        public async Task<bool> RemoveAll()
+        {
+            try
+            {
+                DeleteResult actionResult = await _context.PokemonMoves.DeleteManyAsync(new BsonDocument());
+
+                return actionResult.IsAcknowledged
+                    && actionResult.DeletedCount > 0;
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
     }
 }

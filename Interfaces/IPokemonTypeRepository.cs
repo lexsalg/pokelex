@@ -11,5 +11,7 @@ namespace PokeLexApi.Interfaces
         Task<IEnumerable<PokemonType>> GetAllPokemonTypes();
 
         Task AddPokemonTypes(List<PokemonType> list);
+
+        Task<bool> RemoveAll();
     }
 }

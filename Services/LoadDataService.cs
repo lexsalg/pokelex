@@ -95,13 +95,25 @@ namespace PokeLexApi.Services
             {
                 DirectoryInfo dir = new DirectoryInfo("SeedData/images");
                 var i = 1;
+
+                var images = new List<Image>();
+
                 foreach (FileInfo file in dir.GetFiles())
                 {
                     byte[] bytes = System.IO.File.ReadAllBytes($"SeedData/images/{file.Name}");
-                    _imageRepository.AddPokemonImage(new Image { Id = i.ToString(), ContentImage = bytes });
+                    images.Add(new Image { Id = i.ToString(), ContentImage = bytes });
                     i++;
                 }
+                _imageRepository.AddPokemonImages(images);
             });
+        }
+
+        public async Task DeleteData()
+        {
+            await this._pokemonRepository.RemoveAllPokemons();
+            await this._pokemonMoveRepository.RemoveAll();
+            await this._pokemonTypeRepository.RemoveAll();
+            await this._imageRepository.RemoveAll();
         }
     }
 }

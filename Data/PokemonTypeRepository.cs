@@ -7,6 +7,7 @@ using MongoDB.Driver;
 
 using PokeLexApi.Interfaces;
 using PokeLexApi.Models;
+using MongoDB.Bson;
 
 namespace PokeLexApi.Data
 {
@@ -36,6 +37,22 @@ namespace PokeLexApi.Data
             try
             {
                 await _context.PokemonTypes.InsertManyAsync(list);
+            }
+            catch (Exception ex)
+            {
+                // log or manage the exception
+                throw ex;
+            }
+        }
+
+        public async Task<bool> RemoveAll()
+        {
+            try
+            {
+                DeleteResult actionResult = await _context.PokemonTypes.DeleteManyAsync(new BsonDocument());
+
+                return actionResult.IsAcknowledged
+                    && actionResult.DeletedCount > 0;
             }
             catch (Exception ex)
             {

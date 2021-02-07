@@ -25,5 +25,12 @@ namespace PokeLexApi.Controllers
             _loadDataService.LoadData();
             return new OkResult();
         }
+
+        [HttpDelete]
+        public OkResult BorrarDataDB()
+        {
+            _loadDataService.DeleteData();
+            return new OkResult();
+        }
     }
 }
