@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Pokemon, PokemonColor, PokemonTypes } from 'src/app/models';
+import { Pokemon, PokemonTypes } from 'src/app/models';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -18,12 +18,6 @@ export class PokemonCard implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.getColor());
-
   }
 
-
-  getColor() {
-    return PokemonColor[(Math.random() * 10).toFixed(0)];
-  }
 }

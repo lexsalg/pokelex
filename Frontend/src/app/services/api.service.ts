@@ -5,7 +5,8 @@ import { environment as env } from 'src/environments/environment';
 
 
 import { Observable } from 'rxjs';
-import { Pokemon } from '../models';
+import { Pokemon, PokemonColor } from '../models';
+import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -17,7 +18,11 @@ export class ApiService {
             .set('pnum', pageNumber)
             .set('psize', pageSize);
         const url = `${env.api}/pokemon/filter`;
-        return this.http.get<Pokemon[]>(url, { params });
+        return this.http.get<Pokemon[]>(url, { params }).pipe(
+            map(pokemons => {
+                pokemons.forEach(p => { p.color = PokemonColor[(Math.random() * 10).toFixed(0)]; });
+                return pokemons;
+            }));
     }
 
     getPokemon(id: string): Observable<any> {

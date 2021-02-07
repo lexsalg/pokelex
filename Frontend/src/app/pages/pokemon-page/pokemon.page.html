@@ -1,12 +1,12 @@
 <div class="container">
 
-    <div class="d-flex justify-content-center">
-        <pokemon-filter></pokemon-filter>
-    </div>
+    <pokemon-filter></pokemon-filter>
+
+    <hr>
 
     <div class="row wrapper">
-        <!-- <div > -->
-        <pokemon-card *ngFor="let p of pokemones" class="col-3 mb-4" [pokemon]="p"></pokemon-card>
-        <!-- </div> -->
+        <pokemon-card *ngFor="let p of pokemones" class="col-3 mb-4" [id]="p.id" [pokemon]="p">
+        </pokemon-card>
     </div>
+
 </div>

@@ -16,3 +16,16 @@ html,body{
   background: #01293c;
   background-color: #01293c;
 }
+*{
+  scrollbar-color: gray #c2cfe0;
+  scrollbar-width: thin;
+  scrollbar-arrow-color: #c2cfe0;
+  scroll-behavior: smooth;
+  &::-webkit-scrollbar-thumb {
+    background-color: gray;
+    border-radius: 30px;
+  }
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+}

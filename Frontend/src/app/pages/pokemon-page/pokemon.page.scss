@@ -1,0 +1,15 @@
+hr{
+    margin-top:4px;
+    border-top:2px solid rgb(220 220 220)
+}
+
+.wrapper{
+    overflow: auto;
+    max-height: 650px;
+
+    @media only screen and (min-width : 1700px) {
+        overflow: auto;
+        max-height: 750px;
+    }
+    
+}

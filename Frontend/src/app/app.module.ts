@@ -15,6 +15,7 @@ import { BlockUi, PokemonCard, PokemonFilter, ToolBar } from './components';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRouting } from './app.routing';
 import { InicioPage, PokemonPage } from './pages';
+import { DeferLoadDirective } from './services/defer-load.directive';
 
 
 
@@ -22,11 +23,12 @@ const COMPONENTS = [
   InicioPage,
   PokemonPage,
   PokemonCard,
-  PokemonFilter,
+  PokemonFilter,  
 
   BlockUi,
   ToolBar,
 
+  DeferLoadDirective
 
 ];
 

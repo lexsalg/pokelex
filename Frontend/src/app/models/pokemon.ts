@@ -7,6 +7,7 @@ export class Pokemon {
   name: Language;
   type: string[];
   base: PokemonBase;
+  color: string;
 }
 
 

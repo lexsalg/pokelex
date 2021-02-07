@@ -37,7 +37,7 @@ namespace PokeLexApi
             services.AddSingleton<IImageRepository, ImageRepository>();
             services.AddSingleton<ILoadDataService, LoadDataService>();
 
-            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "ClientApp/dist"; });
+            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "Frontend/dist"; });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
