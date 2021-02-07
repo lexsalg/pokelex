@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <img src="https://assets.pokemon.com/assets/cms2-es-xl/img/misc/gus/buttons/logo-pokemon-79x45.png"
+         class="mr-5" alt="logo" class="d-inline-block align-top">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/"
+                   [routerLinkActive]="['active']"
+                   [routerLinkActiveOptions]="{exact:true}">Cargar Datos DB</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/pokemon" [routerLinkActive]="['active']">Pokedex</a>
+            </li>
+
+        </ul>
+        <div class="form-inline my-2 my-lg-0">
+            <span class="navbar-text">
+                {{date|date :'dd/MM/yyyy HH:mm'}}
+            </span>
+        </div>
+    </div>
+</nav>
