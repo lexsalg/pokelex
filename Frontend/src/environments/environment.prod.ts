@@ -1,5 +1,5 @@
 
-const domain = 'localhost:5000';
+const domain = '158.101.114.10/pokelex';
 const version = 'v1';
 const protocol = 'http';
 
