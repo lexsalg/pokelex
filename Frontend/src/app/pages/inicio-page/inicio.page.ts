@@ -44,6 +44,14 @@ export class InicioPage implements OnInit {
   cargar(message?: string) {
     this.blockUI.start('Cargando Pokemones...');
     this.api.cargarPokemonesBD()
+      .pipe(delay(3000))
+      .pipe(finalize(() => this.blockUI.stop()))
+      .subscribe(res => this.redirect());
+  }
+
+  borrar(message?: string) {
+    this.blockUI.start('Cargando Pokemones...');
+    this.api.borrarPokemonesBD()
       .pipe(delay(1000))
       .pipe(finalize(() => this.blockUI.stop()))
       .subscribe(res => this.redirect());

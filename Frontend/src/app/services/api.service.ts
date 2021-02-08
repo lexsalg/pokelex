@@ -49,6 +49,11 @@ export class ApiService {
         return this.http.get<any>(url);
     }
 
+    borrarPokemonesBD(): Observable<any> {
+        const url = `${env.api}/seed`;
+        return this.http.delete<any>(url);
+    }
+
     getPokemeonImageUrl() {
         return `${env.api}/image`;
     }
