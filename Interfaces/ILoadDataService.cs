@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
-using PokeLexApi.Models;
-
+﻿using System.Threading.Tasks;
 namespace PokeLexApi.Interfaces
 {
     public interface ILoadDataService

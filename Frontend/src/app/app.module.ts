@@ -1,5 +1,4 @@
 import { BrowserModule } from '@angular/platform-browser';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // used for dropdowns
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -43,7 +42,6 @@ const COMPONENTS = [
   ],
   imports: [
     BrowserModule,
-    // BrowserAnimationsModule,
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
