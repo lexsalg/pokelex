@@ -5,7 +5,7 @@ import { environment as env } from 'src/environments/environment';
 
 
 import { Observable } from 'rxjs';
-import { Pokemon, PokemonColor } from '../models';
+import { Pokemon, PokemonColor, PokemonMove } from '../models';
 import { map } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
@@ -28,6 +28,11 @@ export class ApiService {
     getPokemon(id: string): Observable<any> {
         const url = `${env.api}/pokemon/${id}`;
         return this.http.get<any>(url);
+    }
+
+    getPokemonMove(id: string): Observable<PokemonMove> {
+        const url = `${env.api}/pokemonmove/${id}`;
+        return this.http.get<PokemonMove>(url);
     }
 
     buscarPokemon(name = '', pageNumber: any = 1, pageSize: any = 20): Observable<Pokemon[]> {

@@ -1,15 +1,10 @@
-﻿using System;
+﻿
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 using PokeLexApi.Interfaces;
 using PokeLexApi.Models;
-using PokeLexApi.Models.Seed;
 
 namespace PokeLexApi.Controllers
 {

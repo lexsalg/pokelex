@@ -16,6 +16,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRouting } from './app.routing';
 import { InicioPage, PokemonPage } from './pages';
 import { DeferLoadDirective } from './services/defer-load.directive';
+import { PokemonDetail } from './components/pokemon-detail/pokemon-detail';
 
 
 
@@ -23,7 +24,8 @@ const COMPONENTS = [
   InicioPage,
   PokemonPage,
   PokemonCard,
-  PokemonFilter,  
+  PokemonFilter,
+  PokemonDetail,
 
   BlockUi,
   ToolBar,

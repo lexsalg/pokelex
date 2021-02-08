@@ -7,7 +7,8 @@ namespace PokeLexApi.Models
     public class PokemonMove
     {
         [BsonId]
-        public ObjectId InternalId { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string InternalId { get; set; }
         public string Id { get; set; }
         public int? Accuracy { get; set; } = 0;
         public string Category { get; set; }
