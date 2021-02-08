@@ -1,27 +1,47 @@
-<!-- <div class="modal-header">
-    <h4 class="modal-title">Hi there!</h4>
-    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div> -->
+<div class="card card-container bg-{{pokemon.color}}">
 
-<!-- <div class="modal-body"> -->
-<!-- <div class="wrapper"> -->
-    <div class="card bg-{{pokemon.color}}"><img src="{{url}}/{{pokemon.id}}" alt="Image" />
-        <div class="info">
-            <h5>#{{pokemon.id}}</h5>
-            <h5>{{pokemon.name.english}}</h5>
+    <img src="{{url}}/{{pokemon.id}}" class="card-img-top" alt="Image" />
+    <div class="card-body">
 
-            <div class>
-                <span *ngFor="let t of pokemon?.type"
-                      class="mr-2 mb-2 badge badge-{{pokemonTypes[t]}}">{{t}}
-                </span>
+        <div class="d-flex justify-content-between">
+            <h1 class="card-title"
+                [ngClass]="{'text-white': pokemon.color!='light'}">
+                {{pokemon.name.english}}
+            </h1>
+            <h1 [ngClass]="{'text-white': (pokemon.color!='light'&&pokemon.color!='')}">#{{pokemon.id}}</h1>
+        </div>
+
+        <div class="mb-3">
+            <h5 [ngClass]="{'text-white': (pokemon.color!='light'&&pokemon.color!='')}">Type:</h5>
+            <span *ngFor="let t of pokemon?.type"
+                  class="mr-2 mb-2 badge badge-{{pokemonTypes[t]}}">{{t}}
+            </span>
+        </div>
+
+        <div class="row">
+
+            <div class="col-6">
+                <h5 [ngClass]="{'text-white': (pokemon.color!='light'&&pokemon.color!='')}">Stats:</h5>
+                <span class="mr-2 mb-2 badge badge-primary">HP: {{pokemon.base.hp}} </span>
+                <span class="mr-2 mb-2 badge badge-secondary">Attack: {{pokemon.base.attack}} </span>
+                <span class="mr-2 mb-2 badge badge-success">Defense: {{pokemon.base.defense}} </span>
+                <span class="mr-2 mb-2 badge badge-danger">Special Attack: {{pokemon.base.spAttack}} </span>
+                <span class="mr-2 mb-2 badge badge-warning">Special Defense: {{pokemon.base.spDefense}} </span>
+                <span class="mr-2 mb-2 badge badge-info">Speed: {{pokemon.base.speed}} </span>
             </div>
+
+            <div class="col-6">
+                <h5 [ngClass]="{'text-white': (pokemon.color!='light'&&pokemon.color!='')}">Moves:</h5>
+
+                <span class="mr-2 mb-2 badge badge-info">Type: {{pokemon.move.type}} </span>
+                <span class="mr-2 mb-2 badge badge-secondary">Accuracy {{pokemon.move.accuracy}} </span>
+                <span class="mr-2 mb-2 badge badge-success">Ename: {{pokemon.move.ename}} </span>
+                <span class="mr-2 mb-2 badge badge-danger">Power: {{pokemon.move.power}} </span>
+                <span class="mr-2 mb-2 badge badge-warning">PP: {{pokemon.move.pp}} </span>
+                <span class="mr-2 mb-2 badge badge-primary">Category: {{pokemon.move.category}} </span>
+
+            </div>
+
         </div>
     </div>
-<!-- </div> -->
-<!-- </div> -->
-
-<!-- <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
-</div> -->
+</div>
