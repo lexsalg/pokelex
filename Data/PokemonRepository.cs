@@ -54,7 +54,11 @@ namespace PokeLexApi.Data
             try
             {
                 var skips = pageSize * (pageNum - 1);
-                var query = _context.Pokemons.Find(x => x.Name.English.Contains(name)).SortBy(p => p.InternalId).Skip(skips).Limit(pageSize);
+
+                var query = (name == "" || name == null) ?
+                 _context.Pokemons.Find(_ => true).SortBy(p => p.InternalId).Skip(skips).Limit(pageSize) :
+                _context.Pokemons.Find(x => x.Name.English.Contains(name)).SortBy(p => p.InternalId).Skip(skips).Limit(pageSize);
+
                 var items = await query.ToListAsync();
                 return items;
             }

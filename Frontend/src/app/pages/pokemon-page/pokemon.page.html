@@ -1,12 +1,16 @@
 <div class="container">
 
-    <pokemon-filter></pokemon-filter>
+    <pokemon-filter (formChange)="filterChange($event)"></pokemon-filter>
 
     <hr>
 
     <div class="row wrapper">
-        <pokemon-card *ngFor="let p of pokemones" class="col-3 mb-4" [id]="p.id" [pokemon]="p">
+        <pokemon-card *ngFor="let p of pokemones" class="col-12 col-md-3 mb-4" [id]="p.id" [pokemon]="p">
         </pokemon-card>
+    </div>
+
+    <div *ngIf="pokemones.length==0" class="d-flex justify-content-center">
+        <img src="assets/empty.png" alt="" srcset="">
     </div>
 
 </div>

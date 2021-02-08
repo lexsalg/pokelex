@@ -72,4 +72,33 @@ export class PokemonPage implements OnInit, AfterViewInit {
     }
   }
 
+
+  filterChange(value) {
+    try {
+      this.scrollObserver.unobserve(document.getElementById(this.lastElementId))
+    } catch (error) {
+    }
+    this.pageNumber = 1;
+    this.pokemones = [];
+    this.buscarPokemones(value, this.pageNumber, this.pageSize)
+
+  }
+
+  buscarPokemones(nombre, pageNumber, pageSize) {
+    this.blockUI.start('Cargando...');
+
+    this.api.buscarPokemon(nombre, pageNumber, pageSize)
+      .pipe(delay(100))
+      .pipe(finalize(() => this.blockUI.stop()))
+      .subscribe(
+        res => {
+          this.pokemones = [...this.pokemones, ...res];
+          this.observeLastElement(res);
+          // if (res.length == 0) {
+          //   alert('No se encontraron resultados para la búsqueda');
+          // }
+        }
+      )
+  }
+
 }

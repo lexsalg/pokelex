@@ -1,4 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 import { Pokemon } from 'src/app/models';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -9,12 +12,32 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class PokemonFilter implements OnInit {
 
-  @Input() pokemon: Pokemon;
+  f: FormGroup;
 
-  url = '';
-  constructor(private api: ApiService) {
-    this.url = this.api.getPokemeonImageUrl();
+  @Output() formChange = new EventEmitter();
+
+  obs: Subscription;
+
+  constructor(private fb: FormBuilder, private api: ApiService) {
+
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.initForm();
+    this.changeName();
+  }
+
+  ngOnDestroy(): void {
+    this.obs.unsubscribe();
+  }
+
+  initForm() {
+    this.f = this.fb.group({ nombre: '', tipo: '' });
+  }
+
+  changeName() {
+    this.obs = this.f.get('nombre').valueChanges
+      .pipe(debounceTime(500))
+      .subscribe(value => this.formChange.emit(value));
+  }
 }
