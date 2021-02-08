@@ -21,4 +21,10 @@ export class PokemonDetail implements OnInit {
   ngOnInit(): void {
   }
 
+  setImageId(id: string) {
+    if (id.length == 1) return `${this.url}/00${id}`;
+    else if (id.length == 2) return `${this.url}/0${id}`;
+    else if (id.length == 3) return `${this.url}/${id}`;
+  }
+
 }

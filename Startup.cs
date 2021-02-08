@@ -37,9 +37,9 @@ namespace PokeLexApi
             services.AddSingleton<IImageRepository, ImageRepository>();
             services.AddSingleton<ILoadDataService, LoadDataService>();
 
-            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "Frontend/dist"; });
-
-            services.AddControllers();
+            services.AddControllersWithViews();
+            services.AddSpaStaticFiles(configuration => { configuration.RootPath = "dist"; });
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PokeLexApi", Version = "v1" });

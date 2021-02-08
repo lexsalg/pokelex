@@ -94,15 +94,13 @@ namespace PokeLexApi.Services
             return Task.Run(() =>
             {
                 DirectoryInfo dir = new DirectoryInfo("SeedData/images");
-                var i = 1;
-
                 var images = new List<Image>();
 
                 foreach (FileInfo file in dir.GetFiles())
                 {
+                    var cad = file.Name.Split(".");
                     byte[] bytes = System.IO.File.ReadAllBytes($"SeedData/images/{file.Name}");
-                    images.Add(new Image { Id = i.ToString(), ContentImage = bytes });
-                    i++;
+                    images.Add(new Image { Id = cad[0], ContentImage = bytes });
                 }
                 _imageRepository.AddPokemonImages(images);
             });

@@ -33,7 +33,7 @@ export class PokemonCard implements OnInit {
   }
 
   openDetail() {
-    const modalRef = this.modalService.open(PokemonDetail,{windowClass:'modal-container'});
+    const modalRef = this.modalService.open(PokemonDetail, { windowClass: 'modal-container' });
     modalRef.componentInstance.pokemon = this.pokemon;
   }
 
@@ -46,4 +46,9 @@ export class PokemonCard implements OnInit {
       .pipe(tap(move => this.pokemon.move = move))
   }
 
+  setImageId(id: string) {
+    if (id.length == 1) return `${this.url}/00${id}`;
+    else if (id.length == 2) return `${this.url}/0${id}`;
+    else if (id.length == 3) return `${this.url}/${id}`;
+  }
 }

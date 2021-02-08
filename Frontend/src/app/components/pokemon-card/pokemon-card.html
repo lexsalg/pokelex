@@ -1,5 +1,6 @@
 <div class="wrapper">
-    <div class="card bg-{{pokemon.color}}"><img src="{{url}}/{{pokemon.id}}" alt="Image" />
+    <div class="card bg-{{pokemon.color}}">
+        <img [src]="setImageId(pokemon.id)" alt="Image" />
         <div class="info">
             <h5>#{{pokemon.id}}</h5>
             <h5>{{pokemon.name.english}}</h5>

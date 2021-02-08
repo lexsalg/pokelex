@@ -1,15 +1,25 @@
 version: "3.7"
 services:
 
-  sql-server-db:
-    container_name: sql-server-db
-    image: microsoft/mssql-server-linux:2017-latest
-    ports:
-      - "1433:1433"
-    environment:
-      SA_PASSWORD: "pokeLex"
-      ACCEPT_EULA: "Y"
+  # sql-server-db:
+  #   container_name: sql-server-db
+  #   image: microsoft/mssql-server-linux:2017-latest
+  #   ports:
+  #     - "1433:1433"
+  #   environment:
+  #     SA_PASSWORD: "pokeLex"
+  #     ACCEPT_EULA: "Y"
 
+  app:
+    build: .
+    container_name: pokelex
+    ports:
+      - 5000:80
+    depends_on:
+      - mongodb-db_container
+    environment:
+      MONGODB_URI: 'mongodb://root:rootpassword@mongodb-db_container:27017'
+  
   mongodb-db_container:
     image: mongo:latest
     environment:

@@ -2,7 +2,6 @@
 using MongoDB.Driver;
 
 using PokeLexApi.Models;
-
 namespace PokeLexApi.Data
 {
     public class PokemonContext
@@ -11,7 +10,12 @@ namespace PokeLexApi.Data
 
         public PokemonContext(IOptions<Settings> settings)
         {
-            var client = new MongoClient(settings.Value.ConnectionString);
+            string connectionString = System.Environment.GetEnvironmentVariable("MONGODB_URI");
+            if (connectionString == null)
+            {
+                connectionString = settings.Value.ConnectionString;
+            }
+            var client = new MongoClient(connectionString);
             if (client != null)
                 _database = client.GetDatabase(settings.Value.Database);
         }
