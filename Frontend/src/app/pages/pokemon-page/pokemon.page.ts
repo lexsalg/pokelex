@@ -93,7 +93,8 @@ export class PokemonPage implements OnInit, AfterViewInit {
       .subscribe(
         res => {
           this.pokemones = [...this.pokemones, ...res];
-          this.observeLastElement(res);
+          if (nombre == '' || nombre == null)
+            this.observeLastElement(res);
           // if (res.length == 0) {
           //   alert('No se encontraron resultados para la búsqueda');
           // }

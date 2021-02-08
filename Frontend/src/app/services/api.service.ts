@@ -36,7 +36,11 @@ export class ApiService {
             .set('pnum', pageNumber)
             .set('psize', pageSize);
         const url = `${env.api}/pokemon/search`;
-        return this.http.get<Pokemon[]>(url, { params });
+        return this.http.get<Pokemon[]>(url, { params }).pipe(
+            map(pokemons => {
+                pokemons.forEach(p => { p.color = PokemonColor[(Math.random() * 10).toFixed(0)]; });
+                return pokemons;
+            }));
     }
 
 
